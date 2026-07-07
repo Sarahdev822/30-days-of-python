@@ -40,7 +40,7 @@ print(product)
 print(division)
 print(remainder)
 
-area_of_circle = 3.14 * 30 * 30
+area_of_circle = 3.14 * 30 ** 2
 print(area_of_circle)
 
 radius = input('Radius: ')
