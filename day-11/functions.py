@@ -104,11 +104,75 @@ def sum_of_even(number):
 #Exercises: Level 2
 #Declare a function named evens_and_odds . It takes a positive integer as parameter and it counts number of evens and odds in the number.
 def evens_and_odds(interger):
-    evens = []
-    odds = []
-    for num in (interger + 1):
+    evens = 0
+    odds =0
+    for num in range(interger + 1):
         if(num % 2 == 0):
-            evens.append(num)
+            evens += 1
         elif(num % 2 != 0):
-            odds.append(num)
-    return print(f'The number of evens are '{len(evens)})
+            odds += 1
+    print(f'The number of evens are {evens}.')
+    print(f'The number of odds are {odds}.')
+
+#Call your function factorial, it takes a whole number as a parameter and it return a factorial of the number
+def factorial(number):
+    factorial = 1
+    for num in range(1, number + 1):
+        factorial *= num
+    return factorial
+
+#Call your function is_empty, it takes a parameter and it checks if it is empty or not
+def is_empty(para):
+    return not para
+
+#Write different functions which take lists. They should calculate_mean, calculate_median, calculate_mode, calculate_range, calculate_variance, calculate_std (standard deviation).
+def calculate_mean(lists):
+    total = 0
+    for i in lists:
+        total += i
+    mean = int(total) / int(len(lists))
+    return mean
+
+def calculate_median(lists):
+    sorted_lists = sorted(lists)
+    n = len(lists)
+    middle_index = n // 2
+    if(n % 2 == 0):
+        left_num = sorted_lists[middle_index -1]
+        right_num = sorted_lists[middle_index]
+        return int(right_num + left_num) /2
+    else:
+        return sorted_lists[middle_index]
+
+def calculate_mode(lists):
+    counts = {}
+    for item in lists:
+        counts[item] = counts.get(item, 0) + 1
+    max_count = max(counts.values())
+    modes = [item for item, count in counts.items() if count == max_count]
+    return modes
+
+def calculate_range(lists):
+    sorted_list = sorted(lists)
+    smallest = sorted_list[0]
+    largest = sorted_list[int(len(sorted_list)) - 1]
+    range = largest - smallest
+    return range
+
+def calculate_variance(lists):
+    mean = calculate_mean(lists)
+    sum_of_squared = 0
+    for num in lists:
+        sum_of_squared += (mean - num) ** 2
+    return sum_of_squared / len(lists)
+
+import math
+def calculate_std(lists):
+    variance = calculate_variance(lists)
+    return math.sqrt(variance)
+
+#Write a function called greet which takes a default argument, name. If no argument is supplied it should print "Hello, Guest!", otherwise it should greet the person by name.
+def greet(name = 'Guest'):
+    print(f'Hello, {name}!')
+
+#Create a function called show_args to take an arbitrary number of named arguments and print their names and values.
